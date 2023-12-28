@@ -1,16 +1,11 @@
 import type { Metadata } from 'next';
-import { Playfair_Display, Inter } from 'next/font/google';
+import { Playfair_Display } from 'next/font/google';
 import './globals.css';
 import NavBar from './components/NavBar';
-import RecipeCard from './components/RecipeCard';
 
 const playfair = Playfair_Display({
     subsets: ['latin'],
     weight: 'variable'
-});
-
-const inter = Inter({
-    subsets: ['latin']
 });
 
 export const metadata: Metadata = {
