@@ -29,7 +29,7 @@ const ThemeToggle = () => {
         >
             <FaMoon className="text-stone-100" size={20} />
             <div
-                className="absolute bg-stone-100 dark:bg-gray-900 w-6 h-6 rounded-full shadow-md transform transition-transform duration-300"
+                className="absolute bg-stone-100 dark:bg-gray-800 w-6 h-6 rounded-full shadow-md transform transition-transform duration-300"
                 style={darkMode ? { left: '2px' } : { right: '2px' }}
             ></div>
             <BsSunFill className="ml-auto text-stone-100" size={20} />
