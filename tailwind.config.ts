@@ -8,7 +8,13 @@ const config: Config = {
     ],
     darkMode: 'class',
     theme: {
-        extend: {}
+        extend: {
+            screens: {
+                '3xl': '1750px',
+                '4xl': '2100px',
+                '5xl': '2600px'
+            }
+        }
     },
     plugins: []
 };
