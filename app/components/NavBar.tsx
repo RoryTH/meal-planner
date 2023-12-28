@@ -16,8 +16,8 @@ const NavBar = () => {
     const linkClass = (href: string) =>
         `block py-2 px-3 rounded md:p-0 ${
             isActive(href)
-                ? 'bg-green-700 md:bg-transparent text-white md:text-green-700 md:dark:text-green-500'
-                : 'bg-transparent text-gray-900 dark:text-white'
+                ? 'bg-green-700 dark:bg-green-500 md:bg-transparent md:dark:bg-transparent text-stone-100 dark:text-gray-800 md:text-green-700 md:dark:text-green-500'
+                : 'bg-transparent text-gray-900 dark:text-stone-100'
         } md:hover:text-green-700 md:dark:hover:text-green-500`;
 
     const navLinks = [
@@ -27,7 +27,7 @@ const NavBar = () => {
     ];
 
     return (
-        <nav className="bg-white dark:bg-gray-900 text-gray-800 dark:text-white fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+        <nav className="bg-stone-200 dark:bg-gray-900 text-gray-800 dark:text-stone-100 fixed w-full z-20 top-0 start-0 border-b border-stone-100 dark:border-gray-600">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <Link href="/">
                     <PiBowlFoodFill size={40} />
@@ -51,7 +51,7 @@ const NavBar = () => {
                     } items-center justify-between w-full md:flex md:w-auto md:order-1`}
                     id="navbar-sticky"
                 >
-                    <ul className="w-full flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                    <ul className="w-full flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-stone-200 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                         {navLinks.map(({ href, label }) => (
                             <li key={href}>
                                 <Link
