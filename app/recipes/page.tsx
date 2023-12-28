@@ -10,7 +10,7 @@ function Page() {
                 {Array.from({ length: numberOfCards }).map((_, index) => (
                     <RecipeCard
                         key={index}
-                        title={'Chicken and rice'}
+                        title={'Chicken and Rice'}
                         prepTime={15}
                         description={
                             'Thyme-roasted portobellos top a bed of caramelised leek and chestnut mushroom risotto, garnished with homemade cheese tuiles, rich truffle oil and toasted hazelnuts. Delicious seasonal decadence!'

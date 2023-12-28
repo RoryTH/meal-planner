@@ -24,15 +24,15 @@ const ThemeToggle = () => {
 
     return (
         <div
-            className="relative w-20 h-10 flex items-center cursor-pointer rounded-full p-1 bg-stone-400 dark:bg-black "
+            className="relative w-16 h-8 flex items-center cursor-pointer rounded-full p-1 bg-stone-400 dark:bg-black "
             onClick={() => setDarkMode(!darkMode)}
         >
-            <FaMoon className="text-stone-100" size={25} />
+            <FaMoon className="text-stone-100" size={20} />
             <div
-                className="absolute bg-stone-100 dark:bg-gray-900 w-8 h-8 rounded-full shadow-md transform transition-transform duration-300"
+                className="absolute bg-stone-100 dark:bg-gray-900 w-6 h-6 rounded-full shadow-md transform transition-transform duration-300"
                 style={darkMode ? { left: '2px' } : { right: '2px' }}
             ></div>
-            <BsSunFill className="ml-auto text-stone-100" size={25} />
+            <BsSunFill className="ml-auto text-stone-100" size={20} />
         </div>
     );
 };
