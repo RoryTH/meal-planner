@@ -27,10 +27,10 @@ const NavBar = () => {
     ];
 
     return (
-        <nav className="bg-stone-200 dark:bg-gray-900 text-gray-800 dark:text-stone-100 fixed w-full z-20 top-0 start-0 border-b border-stone-100 dark:border-gray-600">
+        <nav className="text-lg bg-stone-200 dark:bg-gray-900 text-gray-800 dark:text-stone-100 fixed w-full z-20 top-0 start-0 border-b border-stone-100 dark:border-gray-600">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <Link href="/">
-                    <PiBowlFoodFill size={40} />
+                    <PiBowlFoodFill size={50} />
                 </Link>
                 <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
                     <ThemeToggle />
