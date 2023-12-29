@@ -34,7 +34,7 @@ const NavBar = () => {
                     className="flex items-center gap-2 font-semibold text-2xl"
                 >
                     <PiBowlFoodFill size={40} />
-                    Epicurist
+                    Epicura
                 </Link>
                 <div className="flex items-center md:order-2 space-x-3 md:ml-20 rtl:space-x-reverse">
                     <ThemeToggle />

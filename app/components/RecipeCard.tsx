@@ -5,8 +5,7 @@ import { PiCurrencyGbp } from 'react-icons/pi';
 import { BsFillPlusSquareFill } from 'react-icons/bs';
 import { FiMinusSquare } from 'react-icons/fi';
 import { MdOutlineTimer } from 'react-icons/md';
-import { FaRegHeart } from 'react-icons/fa';
-import { FaHeart } from 'react-icons/fa';
+import { FaRegHeart, FaHeart } from 'react-icons/fa';
 import { IoNutritionOutline } from 'react-icons/io5';
 
 interface RecipeCardProps {
