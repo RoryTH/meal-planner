@@ -9,3 +9,17 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
+model Recipe {
+  id              Int      @id @default(autoincrement())
+  title           String
+  description     String   @db.Text
+  cookTimeMinutes Int
+  kcal            Int
+  protein         Float
+  carbs           Float
+  fat             Float
+  imageUrl        String
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}

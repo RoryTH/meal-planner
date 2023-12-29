@@ -10,6 +10,7 @@
         "format": "prettier --config .prettierrc 'app/**/*.{ts,tsx}' --write"
     },
     "dependencies": {
+        "@prisma/client": "^5.7.1",
         "next": "14.0.4",
         "prisma": "^5.7.1",
         "react": "^18",
