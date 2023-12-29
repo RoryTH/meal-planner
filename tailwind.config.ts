@@ -10,6 +10,8 @@ const config: Config = {
     theme: {
         extend: {
             screens: {
+                xs: '370px', // custom breakpoint for 350px
+                'between-lg-xl': { min: '1024px', max: '1040px' }, // custom range used for recipe card resizing
                 '3xl': '1750px',
                 '4xl': '2100px',
                 '5xl': '2600px'
