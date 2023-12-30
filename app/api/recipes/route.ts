@@ -37,3 +37,18 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(newRecipe, { status: 201 });
 }
+
+export async function GET() {
+    try {
+        const recipes = await prisma.recipe.findMany();
+
+        return new Response(JSON.stringify(recipes), { status: 200 });
+    } catch (error) {
+        return new Response(
+            JSON.stringify({
+                error: 'An error occurred while fetching recipes'
+            }),
+            { status: 500 }
+        );
+    }
+}
