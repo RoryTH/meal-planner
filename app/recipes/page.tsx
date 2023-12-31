@@ -1,31 +1,40 @@
 import React from 'react';
 import RecipeCard from '../components/RecipeCard';
 
-function Page() {
-    const numberOfCards = 15; // generate placeholder cards for testing
+interface Recipe {
+    id: number;
+    title: string;
+    description: string;
+    cookTimeMinutes: number;
+    kcal: number;
+    protein: number;
+    carbs: number;
+    fat: number;
+    imageUrl: string;
+}
+
+const Page = async () => {
+    const res = await fetch(`http://localhost:3000/api/recipes`);
+    const data = await res.json();
 
     return (
-        <div>
-            <div className="mx-5 justify-items-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 3xl:grid-cols-4 4xl:grid-cols-5 5xl:grid-cols-6 gap-5">
-                {Array.from({ length: numberOfCards }).map((_, index) => (
-                    <RecipeCard
-                        key={index}
-                        title={'Chicken and Rice'}
-                        prepTime={15}
-                        description={
-                            'Thyme-roasted portobellos top a bed of caramelised leek and chestnut mushroom risotto, garnished with homemade cheese tuiles, rich truffle oil and toasted hazelnuts. Delicious seasonal decadence!'
-                        }
-                        imageUrl={`https://source.unsplash.com/collection/11521778?${Math.random()}`}
-                        price={3.98}
-                        calories={650}
-                        protein={43}
-                        carbs={68}
-                        fat={29}
-                    />
-                ))}
-            </div>
+        <div className="mx-5 justify-items-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 3xl:grid-cols-4 4xl:grid-cols-5 5xl:grid-cols-6 gap-5">
+            {data.map((recipe: Recipe) => (
+                <RecipeCard
+                    key={recipe.id}
+                    title={recipe.title}
+                    prepTime={recipe.cookTimeMinutes}
+                    description={recipe.description}
+                    imageUrl={recipe.imageUrl}
+                    price={3.98} // Replace with your actual logic
+                    calories={recipe.kcal}
+                    protein={recipe.protein}
+                    carbs={recipe.carbs}
+                    fat={recipe.fat}
+                />
+            ))}
         </div>
     );
-}
+};
 
 export default Page;
