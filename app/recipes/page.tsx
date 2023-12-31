@@ -14,7 +14,9 @@ interface Recipe {
 }
 
 const Page = async () => {
-    const res = await fetch(`http://localhost:3000/api/recipes`);
+    const res = await fetch(`http://localhost:3000/api/recipes`, {
+        cache: 'no-cache'
+    });
     const data = await res.json();
 
     return (
@@ -26,7 +28,6 @@ const Page = async () => {
                     prepTime={recipe.cookTimeMinutes}
                     description={recipe.description}
                     imageUrl={recipe.imageUrl}
-                    price={3.98} // Replace with your actual logic
                     calories={recipe.kcal}
                     protein={recipe.protein}
                     carbs={recipe.carbs}

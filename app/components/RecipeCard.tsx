@@ -10,7 +10,7 @@ interface RecipeCardProps extends CommonComponentProps {
     description: string;
     prepTime: number;
     imageUrl: string;
-    price: number;
+    // price: number;
     calories: number;
     protein: number;
     carbs: number;
@@ -22,7 +22,7 @@ const RecipeCard: React.FC<RecipeCardProps> = ({
     description,
     prepTime,
     imageUrl,
-    price,
+    // price,
     calories,
     protein,
     carbs,
@@ -53,10 +53,10 @@ const RecipeCard: React.FC<RecipeCardProps> = ({
             </div>
 
             <div className="bg-green-700 dark:bg-green-500 m-0 pb-4 pt-2 px-4">
-                <div className="flex items-center mt-1 text-gray-200 dark:text-gray-800">
+                {/* <div className="flex items-center mt-1 text-gray-200 dark:text-gray-800">
                     <PiCurrencyGbp />
                     <p className="px-2 text-sm">{price} per serving</p>
-                </div>
+                </div> */}
 
                 <div className="flex items-center mt-1 text-gray-200 dark:text-gray-800">
                     <MdOutlineTimer />
