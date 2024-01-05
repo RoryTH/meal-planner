@@ -4,10 +4,7 @@ import { prisma } from '../../../lib/prisma';
 import { createRecipesSchema } from '@/app/validation/createRecipesSchema';
 
 export async function POST(request: NextRequest) {
-    // Check for POST request
-
     try {
-        // Call your scraping and database update function here
         await updateRecipesDatabase();
         return NextResponse.json(
             { message: 'Database updated successfully' },
@@ -29,9 +26,7 @@ async function updateRecipesDatabase() {
 
         const validation = createRecipesSchema.safeParse(recipes);
         if (!validation.success) {
-            // Handle validation errors
-            console.error('Validation failed:', validation.error.errors);
-            throw new Error('Validation failed');
+            return NextResponse.json(validation.error.errors, { status: 400 });
         }
 
         for (const recipeData of recipes) {

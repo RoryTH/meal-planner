@@ -9,32 +9,37 @@ export async function POST(request: NextRequest) {
         return NextResponse.json(validation.error.errors, { status: 400 });
     }
 
-    const newRecipe = await prisma.recipe.create({
-        data: {
-            title: body.title,
-            description: body.description,
-            cookTimeMinutes: body.cookTimeMinutes,
-            kcal: body.kcal,
-            protein: body.protein,
-            carbs: body.carbs,
-            fat: body.fat,
-            imageUrl: body.imageUrl
-        }
-    });
+    try {
+        const newRecipe = await prisma.recipe.create({
+            data: {
+                title: body.title,
+                description: body.description,
+                cookTimeMinutes: body.cookTimeMinutes,
+                kcal: body.kcal,
+                protein: body.protein,
+                carbs: body.carbs,
+                fat: body.fat,
+                imageUrl: body.imageUrl
+            }
+        });
 
-    return NextResponse.json(newRecipe, { status: 201 });
+        return NextResponse.json(newRecipe, { status: 201 });
+    } catch (error) {
+        return NextResponse.json(
+            { error: 'An error occurred while creating recipe' },
+            { status: 500 }
+        );
+    }
 }
 
 export async function GET() {
     try {
         const recipes = await prisma.recipe.findMany();
 
-        return new Response(JSON.stringify(recipes), { status: 200 });
+        return NextResponse.json(recipes, { status: 201 });
     } catch (error) {
-        return new Response(
-            JSON.stringify({
-                error: 'An error occurred while fetching recipes'
-            }),
+        return NextResponse.json(
+            { error: 'An error occurred while fetching recipes' },
             { status: 500 }
         );
     }

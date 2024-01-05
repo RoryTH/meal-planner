@@ -63,7 +63,7 @@ async function getRecipesFromID(recipeID: string): Promise<Recipe | null> {
             kcal: recipe.nutritional_information.per_portion.energy_kcal,
             protein: Math.round(
                 recipe.nutritional_information.per_portion.protein_mg / 1000
-            ),
+            ), // Convert from mg to g and round
             carbs: Math.round(
                 recipe.nutritional_information.per_portion.carbs_mg / 1000
             ), // Convert from mg to g and round
