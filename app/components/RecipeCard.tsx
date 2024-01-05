@@ -41,10 +41,10 @@ const RecipeCard: React.FC<RecipeCardProps> = ({
                 />
                 <SelectRecipeButton className="absolute right-5 transform -translate-y-1/2 p-1.5" />
                 <div>
-                    <h2 className="pt-4 px-4 text-xl font-semibold text-gray-800 dark:text-stone-100">
+                    <h2 className="pt-4 px-4 text-xl font-semibold text-gray-800 dark:text-stone-100 line-clamp-2 h-18">
                         {title}
                     </h2>
-                    <div className="pt-2 pb-4 px-4">
+                    <div className=" pt-2 pb-4 px-4">
                         <p className=" text-gray-700 dark:text-gray-400 line-clamp-2 h-12">
                             {description}
                         </p>
