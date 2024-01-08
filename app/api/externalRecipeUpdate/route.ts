@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import fetchGousto from './fetchGoustoRecipes';
 import { prisma } from '../../../lib/prisma';
-import { createRecipesSchema } from '@/app/validation/Recipe';
+import { createRecipesSchema } from '@/app/validation/recipe';
 
 export async function POST(request: NextRequest) {
     try {

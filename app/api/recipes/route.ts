@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '../../../lib/prisma';
-import { createRecipeSchema } from '@/app/validation/Recipe';
+import { createRecipeSchema } from '@/app/validation/recipe';
 
 export async function POST(request: NextRequest) {
     const body = await request.json();
@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
     try {
         const newRecipe = await prisma.recipe.create({
             data: {
-                userId: body.userId, // temp during development
+                userId: body.userId,
                 title: body.title,
                 description: body.description,
                 cookTime: body.cookTime,
