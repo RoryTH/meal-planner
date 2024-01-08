@@ -1,7 +1,7 @@
 interface Recipe {
     title: string;
     description: string;
-    cookTimeMinutes: number;
+    cookTime: number;
     kcal: number;
     protein: number;
     carbs: number;

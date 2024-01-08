@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import fetchGousto from './fetchGoustoRecipes';
 import { prisma } from '../../../lib/prisma';
-import { createRecipesSchema } from '@/app/validation/createRecipesSchema';
+import { createRecipesSchema } from '@/app/validation/Recipe';
 
 export async function POST(request: NextRequest) {
     try {
@@ -31,7 +31,10 @@ async function updateRecipesDatabase() {
 
         for (const recipeData of recipes) {
             await prisma.recipe.create({
-                data: recipeData
+                data: {
+                    ...recipeData,
+                    userId: 1 // Add userId with value 0
+                }
             });
         }
 

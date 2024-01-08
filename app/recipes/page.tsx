@@ -13,7 +13,7 @@ const Page = async () => {
                 <RecipeCard
                     key={recipe.id}
                     title={recipe.title}
-                    prepTime={recipe.cookTimeMinutes}
+                    prepTime={recipe.cookTime}
                     description={recipe.description}
                     imageUrl={recipe.imageUrl}
                     calories={recipe.kcal}

@@ -12,14 +12,101 @@ datasource db {
 
 model Recipe {
   id              Int      @id @default(autoincrement())
+  userId          Int
   title           String
   description     String   @db.Text
-  cookTimeMinutes Int
-  kcal            Int
-  protein         Float
+  cookTime Int             @default(0) @db.UnsignedInt 
+  kcal            Int      @default(0) @db.UnsignedInt 
+  protein         Float    
   carbs           Float
   fat             Float
-  imageUrl        String
+  imageUrl        String   @db.VarChar(255)
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
+  user            User     @relation(fields: [userId], references: [id])
+  recipeCategories RecipeCategory[]
+  ingredients     RecipeIngredient[]
+  instructions    Instruction[]
+  favoritedBy     FavoriteRecipe[]
+}
+
+
+model User {
+  id             Int        @id @default(autoincrement())
+  roleId         Int
+  username       String     @unique
+  hashedPassword String
+  email          String     @unique
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+  role           Role       @relation(fields: [roleId], references: [id])
+  recipes        Recipe[]
+  favoriteRecipes  FavoriteRecipe[]
+  
+}
+
+model FavoriteRecipe {
+  userId   Int
+  recipeId Int
+  user     User @relation(fields: [userId], references: [id])
+  recipe   Recipe @relation(fields: [recipeId], references: [id])
+
+  @@id([userId, recipeId])
+}
+
+model Role {
+  id    Int    @id @default(autoincrement())
+  type  String
+  users User[]
+}
+
+model Category {
+  id               Int               @id @default(autoincrement())
+  name             String            @unique
+  recipeCategories RecipeCategory[]
+}
+
+model RecipeCategory {
+  recipeId   Int
+  categoryId Int
+  recipe     Recipe      @relation(fields: [recipeId], references: [id])
+  category   Category    @relation(fields: [categoryId], references: [id])
+
+  @@id([recipeId, categoryId])
+}
+
+model RecipeIngredient {
+  recipeId     Int
+  ingredientId Int
+  amount       Float 
+  unitId       Int
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  recipe       Recipe     @relation(fields: [recipeId], references: [id])
+  ingredient   Ingredient @relation(fields: [ingredientId], references: [id])
+  unit         Unit       @relation(fields: [unitId], references: [id])
+
+  @@id([recipeId, ingredientId])
+}
+
+model Ingredient {
+  id               Int                @id @default(autoincrement())
+  name             String             @unique
+  recipeIngredients RecipeIngredient[]
+}
+
+model Unit {
+  id                Int                @id @default(autoincrement())
+  name              String             @unique
+  recipeIngredients RecipeIngredient[]
+}
+
+model Instruction {
+  id          Int      @id @default(autoincrement())
+  recipeId    Int
+  stepNumber  Int      @default(1) @db.UnsignedInt 
+  description String   @db.Text
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  recipe      Recipe   @relation(fields: [recipeId], references: [id])
 }

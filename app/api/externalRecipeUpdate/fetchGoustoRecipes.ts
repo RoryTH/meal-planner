@@ -59,7 +59,7 @@ async function getRecipesFromID(recipeID: string): Promise<Recipe | null> {
         return {
             title: recipe.title,
             description: recipe.description,
-            cookTimeMinutes: recipe.prep_times.for_2,
+            cookTime: recipe.prep_times.for_2,
             kcal: recipe.nutritional_information.per_portion.energy_kcal,
             protein: Math.round(
                 recipe.nutritional_information.per_portion.protein_mg / 1000

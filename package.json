@@ -8,7 +8,8 @@
         "start": "next start",
         "lint": "next lint",
         "format": "prettier --config .prettierrc 'app/**/*.{ts,tsx}' --write",
-        "seed": "tsx prisma/seed.ts"
+        "seed": "tsx prisma/seed.ts",
+        "prismaDev": "dotenv -e .env.local prisma migrate dev "
     },
     "dependencies": {
         "@prisma/client": "^5.7.1",
