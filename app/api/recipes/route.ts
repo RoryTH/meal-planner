@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { prisma } from '../../../lib/prisma';
+import { prisma } from '@/lib/prisma';
 import { createRecipeSchema } from '@/app/validation/recipe';
+import { upsertIngredient } from '@/lib/prismaUtils';
 
 export async function POST(request: NextRequest) {
     const body = await request.json();
@@ -10,6 +11,10 @@ export async function POST(request: NextRequest) {
     }
 
     try {
+        const ingredientOps = body.ingredients.map(
+            (ingredient: RecipeIngredient) => upsertIngredient(ingredient)
+        );
+
         const newRecipe = await prisma.recipe.create({
             data: {
                 userId: body.userId,
@@ -20,7 +25,18 @@ export async function POST(request: NextRequest) {
                 protein: body.protein,
                 carbs: body.carbs,
                 fat: body.fat,
-                imageUrl: body.imageUrl
+                imageUrl: body.imageUrl,
+                recipeCategories: {
+                    create: body.categories.map((catId: number) => ({
+                        categoryId: catId
+                    }))
+                },
+                instructions: {
+                    create: body.instructions
+                },
+                ingredients: {
+                    create: await Promise.all(ingredientOps)
+                }
             }
         });
 
@@ -28,7 +44,7 @@ export async function POST(request: NextRequest) {
     } catch (error) {
         console.log(error);
         return NextResponse.json(
-            { error: 'An error occurred while creating recipe' },
+            { error: 'An error occurred while creating the recipe' },
             { status: 500 }
         );
     }
